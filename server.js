@@ -208,6 +208,11 @@ app.post('/api/create-payment-session', async (req, res) => {
   }
 });
 
+// endpoint to prevent the server from going idle
+app.get('/status', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
